@@ -71,7 +71,7 @@ For Wine, you can see separate shortcuts on the desktop for launching in GPU acc
 
 Currently, GPU acceleration is avaiable for OpenGL 4.0 or below. However, graphical problems, or app crashes are quite common, so if you are experiencing problems, you can always stick with software rendering (llvmpipe).
 
-GPU acceleration should work with any Android device as long as it has Vulkan support (so both Mali, Adreno and RDNA2 GPUs should work). However, I only tested it on two devices so far: Samsung Galaxy S22 (Exynos 2200, RDNA2-based GPU) and Huawei MatePad 11 (Snapdragon 865, Adreno 650 GPU).
+GPU acceleration should work with any Android device as long as it has Vulkan support (so both Mali, Adreno and RDNA2 GPUs should work). However, I only tested it on one device so far: Samsung Galaxy S22 (Exynos 2200, RDNA2-based GPU).
 
 For the best performance, using Termux-X11 is heavily recommended when using GPU acceleration (using VNC takes a massive hit on performance).
 
