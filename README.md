@@ -51,7 +51,7 @@ Termux-X11 is a separate Android app, so you also have to install that.
  - Use the official GitHub Actions page, and download the latest version there (download link will only work if you are logged in to GitHub): https://github.com/termux/termux-x11/actions/workflows/debug_build.yml
  - Unpack the .apk file from the archive, and install it on your Android device.
 	
-In Termux, open ~/.termux/termux.properties file for edit (for example, you can use "nano ~/.termux/termux.properties"), and set the allow-external-apps property to true.
+In Termux, open ~/.termux/termux.properties file for edit (for example, you can use "nano ~/.termux/termux.properties"), and set the allow-external-apps property to true (also uncomment the line if needed), then restart Termux.
 
 After installing app, I recommend you to start at least for a first time (without any pre-configuration). You should see nothing interesting, as currently we do not have a server outputting a dispaly, so you can close the app through the notification panel.
 
