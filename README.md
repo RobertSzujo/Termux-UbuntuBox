@@ -65,7 +65,9 @@ After installing app, I recommend you to start at least for a first time (withou
 To stop the XFCE4 desktop, use the "Exit VNC" button on the desktop if you use VNC, or stop the Termux-X11 app using the notification panel if you use X11 connection. To exit from the Ubuntu proot-distro, use the "exit" command.
 
 ## Notes about GPU acceleration (VirGL)
-
+	
+> So far, only Samsung XClipse 920 GPU (Exynos 2200) is currently confirmed to work, while I experienced immediate crash on Adreno 650 (Snapdragon 865). Other GPUs may or may not work, feel free to try it and feedback on the Reddit thread (see on the bottom of page).
+	
 GPU acceleration is not enabled by default, as it is not very stable at the moment. You can use the 'source ~/enable-gpu-acc.sh' command to enable GPU acceleration for the current terminal session.
 For Wine, you can see separate shortcuts on the desktop for launching in GPU accelerated mode.
 
@@ -93,3 +95,6 @@ I would like to thank everyone for their development, support and solutions, inc
  - The whole r/termux community for their tips and guides
  - Wine developers
  - Ivon's blog for creating easy guides to install VirGL server and Termux-X11 (both of which are pre-configured in this project)
+
+## Support, discussion
+See https://www.reddit.com/r/termux/comments/10hu1x7/termux_prefix_with_preinstalled_ubuntu_2204_proot/ for the latest feedbacks.
