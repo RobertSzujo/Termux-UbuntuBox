@@ -96,7 +96,6 @@ For the best performance, using Termux-X11 is heavily recommended when using GPU
 ## Notes about Wine
 
 Both 32-bit and 64-bit versions of Wine are included. Please note, each version has its own file system, so apps installed on one version can't be accessed from the other. If possible, always use the 32 bit version of an app and 32 bit version of Wine, as box86 is much more stable, and more compatible at the moment.
-For some reason, drives can not be seen in 64 bit Wine file manager, but you can reach the C:\ drive and your phone's sdcard folder using the "Favourites" tab in 7-Zip. This problem does not affect the 32 bit version.
 
 Please note, the shortcuts that Windows installers will place on your desktop can't be directly used to start the apps. This is because the lack of binfmt support, i386 and amd64 applications can't be detected automatically. So, you should use the file manager inside of Wine to launch Windows applications.
 
