@@ -56,7 +56,8 @@ https://drive.google.com/file/d/1nu2GIXjM9Qa8bRh6ZHbY8aGmllVsjqWz/view?usp=share
 - If done, restart Termux (this is important, as you can't access the new commands before restart).
 
 - You are ready to go! (see section below if you also want to use Termux-X11)
-## How to setup Termux-X11 as a display option?
+	
+## How to setup Termux-X11 as a display option (optional, you can also use VNC)?
 Termux-X11 has better performance compared to VNC, but it is a bit more difficult to set up, and also more difficult to control (as unlike many VNC viewers, Termux-X11 does not offer pan&zoom feature for display, and it does not really include touchscreen-friendly control options).
 
 Termux-X11 is a separate Android app, so you also have to install that.
