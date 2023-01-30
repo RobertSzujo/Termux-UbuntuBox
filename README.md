@@ -1,4 +1,5 @@
 # Termux Prefix File with preinstalled Ubuntu 22.04, Wine and VirGL GPU acceleration
+##Updated: 2023-01-30
 
 ## Please make sure to read the whole readme file before installing this file!
 
@@ -12,24 +13,37 @@
 # Ubuntu 22.04 RootFS contents:
 - Simple XFCE4 desktop, which can be used using VNC or Termux-X11 (see instructions below)
 - Audio should work out-of-the-box (it works independently from the display output, so you will hear audio as long as you leave the proot-distro opened).
-- Contains up-to-date packages as 2023-01-15 (you can easily update using apt update/apt upgrade)
+- Contains up-to-date packages as 2023-01-29 (you can easily update using apt update/apt upgrade)
 - Firefox preinstalled & configured to use non-snap version for updating (compatible with proot)
 - Visual Studio Code pre-installed (with extension support)
-- Box86 and Box64 preinstalled and pre-configured (with latest version as of 2023-01-15, you can also find auto updater scripts in tools folder)
+- Box86 and Box64 preinstalled and pre-configured (with latest version as of 2023-01-29, you can also find auto updater scripts in tools folder)
 - Bash support for Box86 and Box64 is also included, so you can use shell scripts, see more info at https://box86.org/2022/09/running-bash-with-box86-box64/
 - Enabled multiarch environment (armhf, arm64, i386, amd64), you can use "apt install packagename:architecture) to install non arm64 packages (i386 packages can be used with box86, while amd64 can be used with box64).
-- Wine 7.0.1 (for 32bit) and Wine 6.0.1 (for 64bit) preinstalled, both has Mono, Gecko, and Visual C++ runtimes preinstalled. You can start each version using shortcuts on desktop (with or without GPU acceleration). The desktop shortcuts start 7-Zip File Manager by default.
+- Wine 8.0 stable (both 32-bit and 64-bit versions) preinstalled. You can start each version using shortcuts on desktop (with or without GPU acceleration). The desktop shortcuts start the built-in Wine file explorer by default.
 
 ## System requirements:
 - Android device with ARM64 processor and 64-bit Android OS (32-bit ARM or x86/x64 CPUs, and 32-bit operating systems are not supported)
-- About ~10GB of free space (however, at least 16GB of free storage is recommended)
-- 2GB of RAM (4GB is recommended, or even more if you want to play games)
-- GPU with Vulkan support for VirGL graphics acceleration (Mali, Adreno, RDNA2 should be fine)
+- About ~6GB of free space (however, at least 10GB of free storage is recommended)
+- 2GB of RAM (4GB is recommended, or even more for graphics-heavy applications/games)
+- GPU with Vulkan support for VirGL graphics acceleration (VirGL is optional, experimental and not enabled by default, see details below)
 - Root is not required!
 - For Android 12 or higher, you also need to modify your phone settings to prevent Android from killing proot-distro automatically: https://ivonblog.com/en-us/posts/fix-termux-signal9-error/
+
 ## Download:
-Updated as of 2023-01-21:
+Current version (2023-01-30):
+https://drive.google.com/file/d/1BC6v8JkKFxbWPk01lAYXsoXWpy0JQaAH/view?usp=sharing
+
+Changelog:
+- Massively recuced file size: The download package now only takes up ~1GB of space, while the installation takes up about ~5.2GB (this also makes free space requirement much smaller).
+- Changed download package format: You no longer have to extract the .tar file from the .7z separately, instead the prefix is now distributed as .tar.xz package which can be directly used in the termux-restore command.
+- Updated all packages (including box86 and box64) to latest version as of 2023-01-29
+- Updated Wine to 8.0 stable for both 32-Bit and 64-Bit versions
+- Wine is no-longer preconfigured, so the first start will take longer (Mono also needs to be downloaded separately if needed)
+- 7-Zip File Manager is no longer bundled for Wine installations, instead the desktop shortcuts will take you to the built-in Wine file explorer
+
+Older Version (2023-01-21):
 https://drive.google.com/file/d/1nu2GIXjM9Qa8bRh6ZHbY8aGmllVsjqWz/view?usp=share_link
+(This one has pre-configured Wine 7.0 32-bit and Wine 6.0 64-bit, and built-in 7-Zip File Manager, but the download size is ~2.3GB and the install size is ~10GB. You also have to extract the .tar file from the .7z archive before using termux-restore)
 
 ## How to install?
 > **WARNING!** If you have an existing Termux installation, installing this prefix file will WIPE your existing Termux prefix folder, including all of your installed and configured packages. The home directory (which is the default directory that you see on startup) should not be affected, but I still recommend making a backup of any important files there.
@@ -38,7 +52,8 @@ https://drive.google.com/file/d/1nu2GIXjM9Qa8bRh6ZHbY8aGmllVsjqWz/view?usp=share
 - Unpack the 7-Zip file and place the .tar file on your phone storage
 - Install Termux from F-Droid (please do not use Google Play Store version)
 - In Termux, use "termux-setup-storage" command and allow application to reach shared storage
-- Use  "termux-restore ./storage/shared/<path to .tar file>" command to install the prefix. If done, restart Termux.
+- Use  "termux-restore ./storage/shared/<path to .tar file>" command to install the prefix. 
+- If done, restart Termux.
 
 > Example: If you placed the .tar file on the root folder of your shared storage, the command would be "termux-restore ./storage/shared/termux-ubuntubox-v2.tar"
 
@@ -64,16 +79,18 @@ After installing app, I recommend you to start at least for a first time (withou
 
 To stop the XFCE4 desktop, use the "Exit VNC" button on the desktop if you use VNC, or stop the Termux-X11 app using the notification panel if you use X11 connection. To exit from the Ubuntu proot-distro, use the "exit" command.
 
+This installation also includes a non-root user called "ubuntu" (password is also "ubuntu"), which is used by default. This user also has sudo privileges for executing commands as root. While it is possible to create and use different users, I heavily recommend using the default one as most custom scripts were made in that user in mind.
+
 ## Notes about GPU acceleration (VirGL)
 	
-> So far, only Samsung XClipse 920 GPU (Exynos 2200) is currently confirmed to work, while I experienced immediate crash on Adreno 650 (Snapdragon 865). Other GPUs may or may not work, feel free to try it and feedback on the Reddit thread (see on the bottom of page).
+> So far, only Samsung XClipse 920 GPU (Exynos 2200) is currently confirmed to work. Other GPUs may or may not work, feel free to try it and feedback on the Reddit thread (see on the bottom of page).
 	
 GPU acceleration is not enabled by default, as it is not very stable at the moment. You can use the 'source ~/enable-gpu-acc.sh' command to enable GPU acceleration for the current terminal session.
 For Wine, you can see separate shortcuts on the desktop for launching in GPU accelerated mode.
 
 Currently, GPU acceleration is avaiable for OpenGL 4.0 or below. However, graphical problems, or app crashes are quite common, so if you are experiencing problems, you can always stick with software rendering (llvmpipe).
 
-GPU acceleration should work with any Android device as long as it has Vulkan support (so both Mali, Adreno and RDNA2 GPUs should work). However, I only tested it on one device so far: Samsung Galaxy S22 (Exynos 2200, RDNA2-based GPU).
+GPU acceleration should work with any Android device as long as it has Vulkan support (at least in theory). However, I only tested it on one device so far: Samsung Galaxy S22 (Exynos 2200, RDNA2-based GPU).
 
 For the best performance, using Termux-X11 is heavily recommended when using GPU acceleration (using VNC takes a massive hit on performance).
 
