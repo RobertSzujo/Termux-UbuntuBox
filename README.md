@@ -18,8 +18,8 @@
 - Visual Studio Code pre-installed (with extension support)
 - Box86 and Box64 preinstalled and pre-configured (with latest version as of 2023-01-29, you can also find auto updater scripts in tools folder)
 - Bash support for Box86 and Box64 is also included, so you can use shell scripts, see more info at https://box86.org/2022/09/running-bash-with-box86-box64/
-- Enabled multiarch environment (armhf, arm64, i386, amd64), you can use "apt install packagename:architecture) to install non arm64 packages (i386 packages can be used with box86, while amd64 can be used with box64).
-- Wine 8.0 stable (both 32-bit and 64-bit versions) preinstalled. You can start each version using shortcuts on desktop (with or without GPU acceleration). The desktop shortcuts start the built-in Wine file explorer by default.
+- Enabled multiarch environment (armhf, arm64, i386, amd64), you can use "apt install packagename:architecture" to install non arm64 packages (i386 packages can be used with box86, while amd64 can be used with box64). To start i386 and amd4 applications, use the command "box86 <command>" (for i386) and "box64 <command>" (for amd64) in the terminal - of course this is not guaranteed to work.
+- Wine 8.0 stable (both 32-bit and 64-bit versions) preinstalled. You can start each version using shortcuts on desktop (with or without GPU acceleration). The desktop shortcuts start the built-in Wine file explorer by default. Please keep in mind that Windows application support is still very limited, given the current state of box86/box64 development and the limitations of running in proot.
 
 ## System requirements:
 - Android device with ARM64 processor and 64-bit Android OS (32-bit ARM or x86/x64 CPUs, and 32-bit operating systems are not supported)
@@ -48,14 +48,12 @@ https://drive.google.com/file/d/1nu2GIXjM9Qa8bRh6ZHbY8aGmllVsjqWz/view?usp=share
 ## How to install?
 > **WARNING!** If you have an existing Termux installation, installing this prefix file will WIPE your existing Termux prefix folder, including all of your installed and configured packages. The home directory (which is the default directory that you see on startup) should not be affected, but I still recommend making a backup of any important files there.
 
-- Download prefix file (see link in Downloads section, available in .7z format)
-- Unpack the 7-Zip file and place the .tar file on your phone storage
+- Download prefix file (see link in Downloads section, available in .tar.xz format)
 - Install Termux from F-Droid (please do not use Google Play Store version)
 - In Termux, use "termux-setup-storage" command and allow application to reach shared storage
-- Use  "termux-restore ./storage/shared/<path to .tar file>" command to install the prefix. 
-- If done, restart Termux.
-
-> Example: If you placed the .tar file on the root folder of your shared storage, the command would be "termux-restore ./storage/shared/termux-ubuntubox-v2.tar"
+- Use  "termux-restore ./storage/shared/<path to .tar.xz file>" command to install the prefix.
+	> Example: If you placed the .tar.xz file on the root folder of your shared storage, the command would be "termux-restore ./storage/shared/termux-ubuntubox-20230130.tar.xz"
+- If done, restart Termux (this is important, as you can't access the new commands before restart).
 
 - You are ready to go! (see section below if you also want to use Termux-X11)
 ## How to setup Termux-X11 as a display option?
