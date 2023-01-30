@@ -1,5 +1,5 @@
 # Termux Prefix File with preinstalled Ubuntu 22.04, Wine and VirGL GPU acceleration
-##Updated: 2023-01-30
+## Updated: 2023-01-30
 
 ## Please make sure to read the whole readme file before installing this file!
 
